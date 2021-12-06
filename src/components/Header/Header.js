@@ -1,3 +1,4 @@
+// компонент который отрисовывает шапку сайта на страницу
 import './Header.css';
 import HeaderLogo from "../HeaderLogo/HeaderLogo";
 import HeaderLogin from "../HeaderLogin/HeaderLogin";

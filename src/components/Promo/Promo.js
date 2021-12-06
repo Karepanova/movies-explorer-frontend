@@ -1,3 +1,4 @@
+// компонент с верстокй баннера страницы "О проекте"
 import React from 'react';
 import './Promo.css';
 import promoLogo from '../../images/promo-logo.svg';
@@ -19,13 +20,6 @@ function Promo() {
    </div>
   </section>
 
-  /*<section className="promo">
-   <img className="promo__logo" src={promoLogo} alt="Логотип" />
-   <h1 className="promo__title">Учебный проект студента факультета Веб-разработки.</h1>
-   <p>
-    Листайте ниже, чтобы узнать больше про этот проект и его создателя.
-   </p>
-  </section>*/
  );
 }
 
