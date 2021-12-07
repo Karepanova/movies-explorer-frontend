@@ -71,11 +71,12 @@
 .nav__account:focus {
     outline: none;
 }
+
 .nav__account-back {
     width: 26px;
     height: 26px;
     border-radius: 50px;
-    /*background: #313131 url(../../images/account.svg) no-repeat center;*/
+    background: #313131 url(../../images/account.svg) no-repeat center;
     margin-left: 7px;
 }
 

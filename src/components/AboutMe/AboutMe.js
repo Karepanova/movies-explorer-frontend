@@ -1,6 +1,6 @@
 // компонент с информацией о студенте
 import './AboutMe.css';
-import photo from '../../images/photo.png';
+import photo from '../../images/photo.jpg';
 
 const AboutMe = () => {
   return (
