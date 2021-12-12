@@ -11,13 +11,13 @@ const Footer = () => {
           <p className="footer__date">&copy; <span>2021</span></p>
           <ul className="footer__links">
             <li className="footer__item">
-              <a className="footer__link" href="https://praktikum.yandex.ru" target="_blank" rel="noreferrer">Яндекс.Практикум</a>
+              <a className="footer__link" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>
             </li>
             <li className="footer__item">
-              <a className="footer__link" href="https://github.com/Karepanova" target="_blank" rel="noreferrer">Github</a>
+              <a className="footer__link" href="https://github.com/Karepanova" target="_blank">Github</a>
             </li>
             <li className="footer__item">
-              <a className="footer__link" href="https://www.facebook.com" target="_blank" rel="noreferrer">Facebook</a>
+              <a className="footer__link" href="https://www.facebook.com" target="_blank">Facebook</a>
             </li>
           </ul>
         </div>

@@ -10,8 +10,8 @@ import Register from '../Register/Register';
 import NotFound from "../NotFound/NotFound";
 
 import Footer from '../Footer/Footer';
-//import Menu from "../Menu/Menu";
-//import Popup from '../Popup/Popup';
+import Menu from "../Menu/Menu";
+import Popup from '../Popup/Popup';
 
 
 
@@ -53,8 +53,8 @@ function App() {
       </div>
 
       <Footer/>
-      {/*<Menu />*/}
-      {/*<Popup/>*/}
+      {/*<Menu />
+      <Popup/>*/}
     </div>
 
 

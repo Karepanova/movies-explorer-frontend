@@ -2,36 +2,39 @@
 import './AboutProject.css';
 
 const AboutProject = () => {
-  return (
-    <section title="О проекте" linkId="about-project" type="project" content="Информация о проекте.">
-      <ul className="project">
-        <li className="project__phase">
-          <p className="project__text project__text_title">Дипломный проект включал 5 этапов</p>
-        </li>
-        <li className="project__phase-sub">
-          <p className="project__text project__text_description">Составление плана, работу над бэкендом, вёрстку,
-            добавление функциональности и финальные доработки.</p>
-        </li>
-        <li className="project__time">
-          <p className="project__text project__text_title">На выполнение диплома ушло 5 недель</p>
-        </li>
-        <li className="project__time-sub">
-          <p className="project__text project__text_description">У каждого этапа был мягкий и жесткий дедлайн, которые
-            нужно было соблюдать, чтобы успешно защититься.</p>
-        </li>
-      </ul>
-      <div className="project__scale">
-        <div className="project__period">
-          <p className="project__text  project__text_black">1 неделя</p>
-        </div>
-        <p className="project__text project__text_back">Back-end</p>
-        <div className="project__period">
-          <p className="project__text">4 недели</p>
-        </div>
-        <p className="project__text project__text_front">Front-end</p>
-      </div>
-    </section>
-  );
+ return (
+  <section className="section__about-project">
+   <div className="container__about-project">
+    <h2 className="header__about-project">О проекте</h2>
+    <ul className="info">
+     <li className="info__chapter">
+      <p className="info__text info__text_present">Дипломный проект включал 5 этапов</p>
+     </li>
+     <li className="info__paragraph">
+      <p className="info__text info__text_explain">Составление плана, работу над бэкендом, вёрстку, добавление
+       функциональности и финальные доработки.</p>
+     </li>
+     <li className="info__chapter2">
+      <p className="info__text info__text_present">На выполнение диплома ушло 5 недель</p>
+     </li>
+     <li className="info__paragraph2">
+      <p className="info__text info__text_explain">У каждого этапа был мягкий и жесткий дедлайн, которые
+       нужно было соблюдать, чтобы успешно защититься.</p>
+     </li>
+    </ul>
+    <div className="scheme">
+     <div className="info__period">
+      <p className="info__text  info__text_black">1 неделя</p>
+     </div>
+     <p className="info__text info__text_back">Back-end</p>
+     <div className="info__period">
+      <p className="info__text info__text_white">4 недели</p>
+     </div>
+     <p className="info__text info__text_front">Front-end</p>
+    </div>
+   </div>
+  </section>
+ );
 };
 
 export default AboutProject;

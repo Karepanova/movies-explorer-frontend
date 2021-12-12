@@ -1,0 +1,22 @@
+
+.header__button-register {
+    padding: 0;
+    margin-right: 30px;
+    background-color: transparent;
+    color: #FFFFFF;
+}
+
+.header__button_enter {
+    padding: 8px 20px;
+    background-color: #3DDC84;
+    color: #000000;
+}
+
+.header__button_setting {
+    cursor: pointer;
+    border: none;
+    border-radius: 3px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 16px;
+}
