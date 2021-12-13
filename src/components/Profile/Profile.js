@@ -1,6 +1,6 @@
 import React from 'react';
 import './Profile.css';
-
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
 
@@ -22,8 +22,9 @@ const Profile = () => {
           </div>
           <p className="profile__text profile__text_type_email">Почта</p>
         </div>
-        <button type="submit" className="profile__button">Редактировать</button>
-        <div to="/" className="profile__link">Выйти из аккаунта</div>
+
+        <Link to="/profile" className="profile__button">Редактировать</Link>
+        <Link to="/profile" className="profile__link">Выйти из аккаунта</Link>
       </form>
     </section>
   );

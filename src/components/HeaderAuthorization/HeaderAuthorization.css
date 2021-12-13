@@ -19,6 +19,7 @@
     font-size: 12px;
     line-height: 16px;
     transition: opacity 0.5s linear;
+    text-decoration: none;
 }
 
 .header__button_config:hover {

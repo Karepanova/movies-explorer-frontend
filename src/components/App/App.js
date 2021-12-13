@@ -13,15 +13,19 @@ import Footer from '../Footer/Footer';
 import Menu from "../Menu/Menu";
 import Popup from '../Popup/Popup';
 
+import { useLocation } from 'react-router-dom';
 
 
 import {Route, Switch} from "react-router-dom";
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <div className="App">
 
-      <Header/>
+      {pathname !== '/signin' && pathname !== '/signup' ?  <Header/> : ''}
+
 
       <div className="App__page">
         <Switch>
@@ -52,7 +56,8 @@ function App() {
         </Switch>
       </div>
 
-      <Footer/>
+      {pathname !== '/signin' && pathname !== '/signup' ?  <Footer/> : ''}
+
       {/*<Menu />
       <Popup/>*/}
     </div>

@@ -3,17 +3,23 @@ import './Header.css';
 import Navigation from '../Navigation/Navigation';
 import HeaderAuthorization from "../HeaderAuthorization/HeaderAuthorization";
 import HeaderBurgerMenu from "../HeaderBurgerMenu/HeaderBurgerMenu";
+import { Link, useLocation } from 'react-router-dom';
+
 
 function Header() {
+ const { pathname } = useLocation();
+
  return (
-  <section className="header">
+  <section className={`header ${pathname !== '/' ? 'header_black' : ''}`}>
    <div className="header__container">
-    <div className="header__logo"/>
-    <HeaderAuthorization/>
+
+    <Link to="/" className="header__logo" />
+
+
     {/*<Navigation/>*/}
+    <HeaderAuthorization/>
 
-
-    {/*<HeaderBurgerMenu/>*/}
+    <HeaderBurgerMenu/>
    </div>
 
   </section>
