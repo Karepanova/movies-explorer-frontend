@@ -4,8 +4,8 @@ import './HeaderAuthorization.css';
 function HeaderAuthorization() {
  return (
   <div className="header__auth">
-   <button type="button" className="header__button-register header__button_setting">Регистрация</button>
-   <button type="button" className="header__button_enter header__button_setting">Войти</button>
+   <button type="button" className="header__button_register header__button_config">Регистрация</button>
+   <button type="button" className="header__button_enter header__button_config">Войти</button>
   </div>
  );
 }

@@ -32,7 +32,7 @@
     align-self: flex-end;
     margin: 22px 22px 0 0;
     padding: 0;
-    transition: opacity 0.6s linear;
+    transition: opacity 0.5s linear;
 }
 
 .menu__close-button:hover {

@@ -11,7 +11,7 @@
     height: 38px;
     width: 38px;
     background: center/38px 38px url(../../images/logo.svg) transparent no-repeat;
-    transition: opacity 0.6s linear;
+    transition: opacity 0.5s linear;
 }
 
 .auth__logo:hover {
@@ -90,7 +90,7 @@
     line-height: 16px;
     text-align: center;
     color: #FFFFFF;
-    transition: opacity 0.6s linear;
+    transition: opacity 0.5s linear;
 }
 
 .auth__submit-button:hover {
@@ -124,7 +124,7 @@
     color: #4285F4;
     padding: 0;
     margin: 0;
-    transition: opacity 0.6s linear;
+    transition: opacity 0.5s linear;
     justify-self: flex-end;
 }
 

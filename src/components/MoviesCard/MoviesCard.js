@@ -6,16 +6,19 @@ import './MoviesCard.css';
 const MoviesCard = () => {
 
   return (
-    <li className="movies-card">
-
-      <p className="movies-card__title">название</p>
-
-          <button type="button" className="movies-card__button movies-card__button_delete" />
-          <button type="button movies-card__button movies-card__button_favorites movies-card__button_favorites-on"/>
-
-      <p className="movies-card__duration">convertTime</p>
-      <div className="movies-card__image" />
-    </li>
+    <div className="movies-card">
+      <div className="movies-card__image"/>
+      <div className="movies-card__element">
+        <div className="movies-card__text">
+          <p className="movies-card__title">33 слова о дизайне</p>
+          <p className="movies-card__time">1ч42м</p>
+        </div>
+        <div className="movies-card__buttons">
+          <button type="button" className="movies-card__button movies-card__button_delete"/>
+          <button type="button" className="movies-card__button movies-card__button_active movies-card__button_inactive"/>
+        </div>
+      </div>
+    </div>
   );
 };
 
