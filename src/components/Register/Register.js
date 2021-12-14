@@ -1,8 +1,8 @@
-import Auth from '../Auth/Auth';
+import Form from '../Form/Form';
 
 function Register() {
   return (
-    <Auth
+    <Form
       header="Добро пожаловать!"
       submit="Зарегистрироваться"
       question="Уже зарегистрированы?"
@@ -10,25 +10,25 @@ function Register() {
       road="/signin"
     >
 
-      <label className="auth__module">
-        <p className="auth__module-text">Имя</p>
-        <input type="text" className="auth__field" required />
-        <p className="auth__error">Что-то пошло не так...</p>
+      <label className="form__module">
+        <p className="form__module-text">Имя</p>
+        <input type="text" className="form__field" required />
+        <p className="form__error">Что-то пошло не так...</p>
       </label>
 
-      <label className="auth__module">
-        <p className="auth__module-text">E-mail</p>
-        <input type="email" className="auth__field" required />
-        <p className="auth__error">Что-то пошло не так...</p>
+      <label className="form__module">
+        <p className="form__module-text">E-mail</p>
+        <input type="email" className="form__field" required />
+        <p className="form__error">Что-то пошло не так...</p>
       </label>
 
-      <label className="auth__module">
-        <p className="auth__module-text">Пароль</p>
-        <input type="password" className="auth__field auth__field-error" required />
-        <p className="auth__error auth__error-display">Что-то пошло не так...</p>
+      <label className="form__module">
+        <p className="form__module-text">Пароль</p>
+        <input type="password" className="form__field form__field_color-error" required />
+        <p className="form__error form__error-display">Что-то пошло не так...</p>
       </label>
 
-    </Auth>
+    </Form>
   );
 }
 

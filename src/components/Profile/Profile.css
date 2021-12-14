@@ -1,8 +1,10 @@
 .profile {
     display: flex;
     justify-content: center;
-    padding: 74px 0 70px;
     box-sizing: border-box;
+    height: calc(100vh - 80px);
+    align-content: space-between;
+    align-items: center;
 }
 
 .profile__form {
@@ -76,7 +78,7 @@
     padding: 16px 0 0 0;
 }
 
-.profile__input {
+.profile__settings {
     background-color: #202020;
     color: #FFFFFF;
     width: 100%;
@@ -87,11 +89,6 @@
     font-weight: normal;
     font-size: 11px;
     line-height: 13px;
-}
-
-.profile__input:focus {
-    outline: none;
-    caret-color: #2BE080;
 }
 
 .profile__button {
@@ -136,28 +133,12 @@
 }
 
 @media all and (max-width: 1023px) {
-    .profile {
-        padding: 236px 0 269px 0;
-    }
-
-    .profile__form {
-        min-height: 411px;
-    }
-
     .profile__greeting {
         margin: 0 0 96px 0;
-    }
-
-    .profile__button {
-        margin: 210px 0 16px;
     }
 }
 
 @media all and (max-width: 700px) {
-    .profile {
-        padding: 70px 0 40px;
-    }
-
     .profile__form {
         max-width: 260px;
     }
@@ -167,7 +148,6 @@
     }
 
     .profile__button {
-        margin: 379px 0 16px;
         font-size: 12px;
     }
 

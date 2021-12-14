@@ -9,14 +9,14 @@ const Profile = () => {
       <form className="profile__form">
         <h3 className="profile__greeting">Привет, кто-то !</h3>
         <div className="profile__inputs">
-          <p className="profile__text profile__text_type_name">Имя</p>
-          <div className="profile__area profile__area_type_name">
-            <input className="profile__input profile__input_type_name" placeholder="Имя" required/>
+          <p className="profile__text">Имя</p>
+          <div className="profile__area profile__area_type_name profile__settings">
+            Анастасия
           </div>
-          <div className="profile__area profile__area_type_email">
-            <input className="profile__input profile__input_type_email" type="email" placeholder="Почта" required/>
+          <div className="profile__area profile__area_type_email profile__settings">
+            pochta@pochta.ru
           </div>
-          <p className="profile__text profile__text_type_email">Почта</p>
+          <p className="profile__text">Почта</p>
         </div>
 
         <Link to="/profile" className="profile__button">Редактировать</Link>

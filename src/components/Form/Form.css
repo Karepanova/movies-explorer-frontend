@@ -1,13 +1,13 @@
-.auth {
+.form {
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 70px;
-    height: 100vh;
+    /*height: 100vh;*/
     max-height: 700px;
 }
 
-.auth__container {
+.form__container {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -17,14 +17,14 @@
     width: 100%;
 }
 
-.auth__header {
+.form__header {
     font-weight: 500;
     font-size: 24px;
     line-height: 29px;
     margin: 40px 0 0 0;
 }
 
-.auth__form {
+.form__form {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -33,7 +33,7 @@
     margin: 40px 0 16px 0;
 }
 
-.auth__button {
+.form__button {
     font-weight: 500;
     font-size: 14px;
     line-height: 17px;
@@ -42,10 +42,10 @@
     border: none;
     border-radius: 3px;
     background-color: #4285F4;
-    margin: 69px 0 0 0;
+    margin: 69px 0 16px 0;
 }
 
-.auth__text {
+.form__text {
     font-size: 14px;
     line-height: 1.21;
     color: #8B8B8B;
@@ -54,20 +54,20 @@
     text-align: center;
 }
 
-.auth__link {
+.form__link {
     color: #4285F4;
     margin-left: 6px;
     text-decoration: none;
 }
 
-.auth__module {
+.form__module {
     display: flex;
     flex-direction: column;
     box-sizing: border-box;
     margin-bottom: 6px;
 }
 
-.auth__module-text {
+.form__module-text {
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
@@ -75,7 +75,7 @@
     margin: 0 0 10px 0;
 }
 
-.auth__field {
+.form__field {
     font-weight: 400;
     font-size: 14px;
     line-height: 18px;
@@ -89,15 +89,15 @@
     box-sizing: border-box;
 }
 
-.auth__field_color-error {
+.form__field_color-error {
     color: #EE3465;
 }
 
-.auth__field:focus {
+.form__field:focus {
     outline: 1px solid #2BE080;
 }
 
-.auth__error {
+.form__error {
     font-weight: normal;
     font-size: 10px;
     line-height: 12px;
@@ -107,30 +107,30 @@
     opacity: 0;
 }
 
-.auth__error-display {
+.form__error-display {
     opacity: 1;
 }
 
 
-@media screen and (max-width: 1000px) {
+@media all and (max-width: 1000px) {
 
-    .auth {
+    .form {
         max-height: 1024px;
         box-sizing: border-box;
     }
 }
 
-@media screen and (max-width: 530px) {
+@media all and (max-width: 530px) {
 
-    .auth {
+    .form {
         padding: 56px 30px 30px;
     }
 
-    .auth__header {
+    .form__header {
         margin: 50px 0 80px 0;
     }
 
-    .auth__container {
+    .form__container {
 
         display: flex;
         flex-direction: column;
@@ -138,18 +138,17 @@
         max-height: 100%;
     }
 
-    .auth__form {
-        margin: 80px 0 14px 0;
+    .form__form {
+        margin: 0;
     }
 
-    .auth__text {
+    .form__text {
         font-size: 12px;
         line-height: 15px;
     }
 
-    .auth__button {
+    .form__button {
         font-size: 12px;
         line-height: 15px;
-        margin: 157px 0 0 0;
     }
 }

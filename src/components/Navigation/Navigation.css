@@ -1,15 +1,14 @@
 .navigation {
     display: flex;
     align-items: center;
-    /*min-height: 18px;*/
 }
 
 .navigation__position {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    /*width: 50vw;
-    max-width: 100%;*/
+    width: 50vw;
+    max-width: 100%;
 }
 
 
@@ -76,8 +75,97 @@
     margin-left: 7px;
 }
 
+.navigation__close {
+    background-image: url('../../images/close.svg');
+    background-repeat: no-repeat;
+    background-size: 30px 30px;
+    background-position: center;
+    background-color: transparent;
+    height: 22px;
+    width: 22px;
+    border: none;
+    padding: 0;
+    transition: opacity 0.5s linear;
+    display: none;
+}
+
+
+.navigation__menu-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.navigation__menu-burger {
+    display: none;
+    background: url(../../images/burger.svg) no-repeat;
+    min-height: 44px;
+    width: 44px;
+    border: none;
+    transition: opacity 0.5s linear;
+}
+
+.navigation__menu-burger:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
 
 @media all and (max-width: 768px) {
+    .navigation__menu-burger {
+        display: block;
+    }
+}
+
+@media all and (max-width: 768px) {
+    .navigation__menu-wrapper {
+        position: fixed;
+        top:0;
+        left:0;
+        bottom: 0;
+        right: 0;
+        background-color: rgba(0,0,0,0.3);
+        justify-content: flex-end;
+        z-index: 1;
+        display: none;
+    }
+
+    .navigation__menu-wrapper_open {
+        display: flex;
+    }
+
+    .navigation__container {
+        width: 100%;
+        max-width: 520px;
+        height: 100%;
+        background-color: #202020;
+        display: flex;
+        flex-direction: column;
+        align-self: flex-start;
+        align-items: center;
+        position: relative;
+    }
+
+    .navigation__close {
+        display: block;
+        position: absolute;
+        top: 22px;
+        right: 22px;
+    }
+
+    .navigation__close:hover {
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .navigation__close:focus {
+        outline: none;
+    }
+
+    .navigation__menu-right_show {
+        display: block;
+    }
+
     .navigation {
         margin: 105px 0 90px;
     }
@@ -108,6 +196,12 @@
     .navigation__menu-right_show {
         display: block;
     }
+
+    .navigation__account {
+        position: absolute;
+        bottom: 90px;
+        right: auto;
+    }
 }
 
 @media all and (max-width: 510px) {
@@ -123,7 +217,6 @@
     .navigation__movies {
         align-items: center;
         flex-direction: column;
-        /*margin: 0 0 444px 0;*/
     }
 
     .navigation__menu {

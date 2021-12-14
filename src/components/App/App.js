@@ -10,7 +10,6 @@ import Register from '../Register/Register';
 import NotFound from "../NotFound/NotFound";
 
 import Footer from '../Footer/Footer';
-import Menu from "../Menu/Menu";
 import Popup from '../Popup/Popup';
 
 import { useLocation } from 'react-router-dom';
@@ -24,7 +23,7 @@ function App() {
   return (
     <div className="App">
 
-      {pathname !== '/signin' && pathname !== '/signup' ?  <Header/> : ''}
+      {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ?  <Header/> : ''}
 
 
       <div className="App__page">
@@ -56,9 +55,8 @@ function App() {
         </Switch>
       </div>
 
-      {pathname !== '/signin' && pathname !== '/signup' ?  <Footer/> : ''}
-
-      {/*<Menu />
+      {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ?  <Footer/> : ''}
+      {/*
       <Popup/>*/}
     </div>
 

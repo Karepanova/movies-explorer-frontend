@@ -78,7 +78,7 @@
     }
 
     .promo__logo {
-        padding: 140px 229px 48px 229px;
+        padding: 140px 0 48px 0;
     }
 
 
@@ -112,7 +112,7 @@
     .promo__logo {
         width: 210px;
         height: 206px;
-        padding: 70px 55px 44px 55px;
+        padding: 70px 0 44px 0;
     }
 
     .promo__basic {
