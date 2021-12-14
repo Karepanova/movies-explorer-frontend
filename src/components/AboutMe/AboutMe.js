@@ -3,6 +3,7 @@ import './AboutMe.css';
 import photo from '../../images/photo3.jpg';
 
 const AboutMe = () => {
+
  return (
   <section className="about-me">
    <h2 className="about-me__header">Студент</h2>
@@ -25,6 +26,7 @@ const AboutMe = () => {
    </div>
   </section>
  );
+
 };
 
 export default AboutMe;
