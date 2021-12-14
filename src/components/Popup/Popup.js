@@ -6,7 +6,7 @@ const Popup = () => {
 
       <div className="popup__container">
         <p className="popup__message">
-          сообщеньки
+          Вы уверены?
         </p>
         <button className="popup__close" type="button"/>
 

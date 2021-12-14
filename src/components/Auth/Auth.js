@@ -1,41 +1,37 @@
 import './Auth.css';
-import React from 'react';
+import logo from '../../images/logo.svg';
+import {Link} from 'react-router-dom';
 
 
+function Auth(props) {
 
-const Auth = () => {
+  const {
+    header,
+    submit,
+    question,
+    link,
+    road,
+    children,
+  } = props;
+
 
   return (
-    <form className="auth">
-      <div to="/" className="auth__logo"/>
-      <h3 className="auth__greeting">Добро пожаловать!</h3>
+    <section className="auth">
+      <div className="auth__container">
+        <img src={logo} alt="Лого" className="auth__logo"/>
+        <h2 className="auth__header">{header}</h2>
+        <form className="auth__form">
+          <div className="auth__items"> {children} </div>
 
-      <div className="auth__inputs">
-                <div className="auth__name-area">
-          <label className="auth__label">Имя</label>
-          <input className="auth__input auth__input_type_error"
-                 placeholder="Имя" name="name" required id="name-input" minLength="2" maxLength="30" />
-
-        </div>
-
-
-        <label className="auth__label">E-mail</label>
-        <input className="auth__input auth__input_type_error"
-               placeholder="Email" type="email" name="email" required id="email-input"
-               pattern="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[a-z]{2,})\b"/>
-
-        <label className="auth__label">Пароль</label>
-        <input className="auth__input auth__input_type_error"
-               placeholder="Пароль" type="password" minLength="4"
-               required name="password" id="password-input" />
+          <button type="submit" className="auth__button">{submit}</button>
+        </form>
+        <p className="auth__text">
+          {question}
+          <Link to={road} className="auth__link">{link}</Link>
+        </p>
       </div>
-
-      <button className="auth__submit-button" type="submit">Зарегистрироваться </button>
-      <p className="auth__caption">
-        <div className="auth__link">ссылка</div>
-      </p>
-    </form>
+    </section>
   );
-};
+}
 
 export default Auth;
