@@ -26,7 +26,7 @@ function App() {
       {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ?  <Header/> : ''}
 
 
-      <div className="App__page">
+      <main className="App__page">
         <Switch>
           <Route exact path="/">
             <Main/>
@@ -53,7 +53,7 @@ function App() {
             <NotFound/>
           </Route>
         </Switch>
-      </div>
+      </main>
 
       {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' ?  <Footer/> : ''}
       {/*
