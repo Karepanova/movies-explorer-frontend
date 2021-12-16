@@ -16,7 +16,7 @@ const Portfolio = () => {
               Адаптивный сайт</a>
           </li>
           <li className="portfolio__item">
-            <a className="portfolio__link" href="https://karepanova.nomoredomains.rocks/" target="_blank">
+            <a className="portfolio__link" href="https://mesto.karepanova.ru/" target="_blank">
               Одностраничное приложение</a>
           </li>
         </ul>

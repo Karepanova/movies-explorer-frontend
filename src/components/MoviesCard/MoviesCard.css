@@ -28,6 +28,8 @@
     border-radius: 10px 10px 0 0;
     object-fit: cover;
     background-size: cover;
+    display: block;
+    text-decoration: none;
 }
 
 .movies-card__image:hover {
