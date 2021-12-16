@@ -1,0 +1,158 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    height: calc(100vh - 80px);
+    align-content: space-between;
+    align-items: center;
+}
+
+.profile__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 410px;
+    /*min-height: 482px;*/
+}
+
+.profile__greeting {
+    margin: 0 0 123px 0;
+    padding: 0;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.profile__inputs {
+    width: 100%;
+    display: grid;
+    background-color:  #424242;
+    row-gap: 1px;
+    grid-template-columns: 1fr 1fr;
+}
+
+
+
+.profile__text {
+    background-color: #202020;
+    width: 100%;
+    margin: 0;
+    padding: 0 0 16px 0;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 13px;
+    color: #FFFFFF;
+    box-sizing: border-box;
+}
+
+.profile__text:first-of-type {
+    grid-row: 1;
+    grid-column: 1;
+}
+
+.profile__text:last-of-type {
+    padding: 16px 0 0 0;
+    grid-row: 2;
+    grid-column: 1;
+}
+
+.profile__area {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    background-color: #202020;
+}
+
+.profile__area_type_name {
+    grid-row: 1;
+    grid-column: 2;
+}
+
+.profile__area_type_email {
+    grid-row: 2;
+    grid-column: 2;
+    justify-content: flex-end;
+    padding: 16px 0 0 0;
+}
+
+.profile__settings {
+    background-color: #202020;
+    color: #FFFFFF;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-align: end;
+    font-weight: normal;
+    font-size: 11px;
+    line-height: 13px;
+}
+
+.profile__button {
+    margin: 220px 0 16px;
+    box-shadow: none;
+    border: none;
+    background-color: transparent;
+    font-weight: normal;
+    font-size: 13px;
+    line-height: 16px;
+    color: #FFFFFF;
+    text-align: center;
+    transition: opacity 0.5s linear;
+    text-decoration: none;
+}
+
+.profile__button:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.profile__button:focus {
+    outline: none;
+}
+
+.profile__button:disabled {
+    opacity: 0.2;
+}
+
+.profile__link {
+    text-decoration: none;
+    color: #EE3465;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    transition: opacity 0.5s linear;
+}
+
+.profile__link:hover {
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+@media all and (max-width: 1023px) {
+    .profile__greeting {
+        margin: 0 0 96px 0;
+    }
+}
+
+@media all and (max-width: 700px) {
+    .profile__form {
+        max-width: 260px;
+    }
+
+    .profile__greeting {
+        margin: 0 0 80px 0;
+    }
+
+    .profile__button {
+        font-size: 12px;
+    }
+
+    .profile__link {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
