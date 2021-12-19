@@ -38,6 +38,17 @@
     width: 100%;
 }
 
+.moviesCardList__text{
+    font-weight: 500;
+    font-size: 44px;
+    line-height: 92px;
+    color: #8B8B8B;
+    margin: 0;
+    padding: 0 0 20px 0;
+    text-align: center;
+}
+
+
 @media all and (max-width: 1200px) {
     .moviesCardList {
         grid-template-columns: repeat(3, 1fr);

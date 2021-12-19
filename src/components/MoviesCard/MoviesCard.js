@@ -3,14 +3,23 @@ import './MoviesCard.css';
 
 import { useLocation } from 'react-router-dom';
 
-const MoviesCard = ({ film }) => {
+const MoviesCard = ({ film, savedMoviesToggle }) => {
  const [fav, setFav] = React.useState(false);
 
  function handleFavChange() {
-  setFav(!fav);
+  const newFav = !fav;
+  setFav(newFav);
+  savedMoviesToggle(film, newFav)
  }
 
  const { pathname } = useLocation();
+
+ function getTime(mins) {
+  let hours = Math.trunc(mins/60);
+  let minutes = mins % 60;
+  return hours + 'ч' + minutes + 'м';
+ }
+ ;
 
  return (
   <section className="movies-card">
@@ -23,7 +32,7 @@ const MoviesCard = ({ film }) => {
    <div className="movies-card__element">
     <div className="movies-card__text">
      <p className="movies-card__title">{film.nameRU}</p>
-     <p className="movies-card__time">{film.duration}</p>
+     <p className="movies-card__time">{getTime(film.duration)}</p>
     </div>
     <div className="movies-card__buttons">
      {pathname === '/saved-movies' ?

@@ -11,6 +11,15 @@
     padding: 0 70px;
 }
 
+.movies__text-error{
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 35px;
+    color: #8B8B8B;
+    margin: 0;
+    padding: 0 0 20px 0;
+    text-align: center;
+}
 
 @media all and (max-width: 1250px) {
     .movies {

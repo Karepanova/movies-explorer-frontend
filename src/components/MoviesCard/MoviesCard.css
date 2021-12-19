@@ -97,6 +97,8 @@
     margin: 10px 0 14px 0;
 }
 
+
+
 @media all and (max-width: 920px) {
     .movies-card__img-block{
         width: 339px;
