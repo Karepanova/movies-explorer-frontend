@@ -19,10 +19,7 @@ const SavedMovies = () => {
 
  /*получение фильмов и запись их в сеттер + отображение Preloader при ожидании фильмов*/
  async function handleGetMovies(inputSearch, tumbler) {
-  if (!inputSearch) {
-   setErrorText('Нужно ввести ключевое слово');
-   return false;
-  }
+
   setErrorText(''); // скидываем ошибки в пусто
   setPreloader(true);
   try {
@@ -48,25 +45,28 @@ const SavedMovies = () => {
   }
  }
 
- /*монтирование - вызов функции "получение филмьов"*/
+ /*монтирование */
  useEffect(() => {
   // получаем данные из локалстор
   const localStorageFilms = localStorage.getItem('savedFilms');
   if (localStorageFilms) {
    // распарсим строку в массив (из локалсторедж)
    setFilms(JSON.parse(localStorageFilms));
-  }
-  const localStorageFilmsTumbler = localStorage.getItem('savedFilmsTumbler');
-  const localStorageFilmsInputSearch = localStorage.getItem('savedFilmsInputSearch');
+   const localStorageFilmsTumbler = localStorage.getItem('savedFilmsTumbler');
+   const localStorageFilmsInputSearch = localStorage.getItem('savedFilmsInputSearch');
 
-  // проверяет есть ли тумблер в локалСтор. и если есть, вставляет его в сеттер
-  if (localStorageFilmsTumbler) {
-   setFilmsTumbler(localStorageFilmsTumbler === 'true');
+   // проверяет есть ли тумблер в локалСтор. и если есть, вставляет его в сеттер
+   if (localStorageFilmsTumbler) {
+    setFilmsTumbler(localStorageFilmsTumbler === 'true');
+   }
+   // проверяет есть ли инпут в локалСтор. и если есть, вставляет его в сеттер
+   if (localStorageFilmsInputSearch) {
+    setFilmsInputSearch(localStorageFilmsInputSearch);
+   }
+  } else {
+   handleGetMovies('', false).then(r => r);
   }
-  // проверяет есть ли инпут в локалСтор. и если есть, вставляет его в сеттер
-  if (localStorageFilmsInputSearch) {
-   setFilmsInputSearch(localStorageFilmsInputSearch);
-  }
+
 
  }, []);
 

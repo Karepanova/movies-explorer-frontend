@@ -9,13 +9,13 @@ const MoviesCard = ({ film, savedMoviesToggle }) => {
  function handleFavChange() {
   const newFav = !fav;
   setFav(newFav);
-  savedMoviesToggle(film, newFav)
+  savedMoviesToggle(film, newFav);
  }
 
  const { pathname } = useLocation();
 
  function getTime(mins) {
-  let hours = Math.trunc(mins/60);
+  let hours = Math.trunc(mins / 60);
   let minutes = mins % 60;
   return hours + 'ч' + minutes + 'м';
  }
@@ -24,9 +24,11 @@ const MoviesCard = ({ film, savedMoviesToggle }) => {
  return (
   <section className="movies-card">
    <div className="movies-card__img-block">
-    <a href={film.trailerLink} target="_blank"
+    <a href={pathname === '/saved-movies' ? film.trailer : film.trailerLink} target="_blank"
        className="movies-card__image"
-       style={{ backgroundImage: `url(https://api.nomoreparties.co${film.image.url})` }}
+       style={pathname === '/saved-movies' ?
+        { backgroundImage: `url(${film.image})` }
+        : { backgroundImage: `url(https://api.nomoreparties.co${film.image.url})` }}
     />
    </div>
    <div className="movies-card__element">

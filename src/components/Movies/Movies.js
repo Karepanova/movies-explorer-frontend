@@ -1,14 +1,14 @@
 // копмонент страницы с поиском по фильмам
 import './Movies.css';
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import moviesApi from "../../utils/MoviesApi";
 import mainApi from "../../utils/MainApi.js";
-
 import SearchForm from '../SearchForm/SearchForm';
-import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Preloader from "../Preloader/Preloader";
-
 const Movies = () => {
+
+
 
  const [films, setFilms] = useState(null);
  const [preloader, setPreloader] = useState(false);
@@ -49,8 +49,24 @@ const Movies = () => {
 
  async function savedMoviesToggle(film, fav) {
   if (fav) {
-   const data = await mainApi.addMovies(film);
-   
+   // console.log('film', film)
+   const objFilm = {
+
+    image: 'https://api.nomoreparties.co' + film.image.url, // делаем из объекта image строку с url
+    trailer: film.trailerLink, // добавляем св-во трейле и записываем в него данные из трейлерлинк
+    thumbnail: 'https://api.nomoreparties.co' + film.image.url,
+    movieId: film.id,
+    country: film.country,
+    director: film.director,
+    duration: film.duration,
+    year: film.year,
+    description: film.description,
+    nameRU: film.nameRU,
+    nameEN: film.nameEN,
+   };
+
+   const data = await mainApi.addMovies(objFilm);
+
   }
  }
 

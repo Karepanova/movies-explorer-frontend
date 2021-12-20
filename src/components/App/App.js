@@ -26,36 +26,39 @@ function App() {
  const [isOpenPopup, setIsOpenPopup] = useState(false);
  const [loggedIn, setLoggedIn] = useState(false); //авторизован или нет
  const [currentUser, setCurrentUser] = useState({}); // данные о пользователе
+ const [isLoading, setIsLoading] = useState(true); // ожидание результата проверки авторизации (авторизова или нет)
 
  const history = useHistory();
  const { pathname } = useLocation();
 
- useEffect(() => {
+ /*useEffect(() => {
   const token = Token.getToken();
   if (token) {
    MainApi.checkToken(token)
-    .then((data) => {
+    .then(() => {
      setLoggedIn(true);
-     history.push('/');
+     /!*history.push('/');*!/
     })
-    .catch((err) => {
+    .catch(() => {
      setPopupText('Ошибка токена');
      setIsOpenPopup(true);
     });
   }
- }, [loggedIn]);
+ }, []);*/
 
  useEffect(() => {
-  if (loggedIn) {
-   MainApi.getUserData()
-    .then((data) => {
-     setCurrentUser(data);
-    })
-    .catch((err) => {
-     console.log(`Ошибка сервера ${err}`);
-    });
-  }
- }, [loggedIn]);
+  MainApi.getUserData()
+   .then((data) => {
+    setCurrentUser(data);
+    setLoggedIn(true);
+   })
+   .catch((err) => {
+    console.log(`Ошибка сервера ${err}`);
+   })
+   .finally(() => {
+    setIsLoading(false);
+   });
+ }, []);
 
  function handleRegister(formData) {
   MainApi.registration(formData)
@@ -98,15 +101,17 @@ function App() {
    <div className="App">
 
     {pathname === '/' || pathname === '/movies' || pathname === '/saved-movies' || pathname === '/profile' ?
-     <Header loggedIn={loggedIn}/> : ''}
+     <Header loggedIn={loggedIn} isLoading={isLoading}/> : ''}
 
 
     <main className="App__page">
      <Switch>
-      <ProtectedRoute exact path="/" loggedIn={loggedIn} component={Main}/>
-      <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies}/>
-      <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies}/>
-      <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile}/>
+      <Route exact path="/">
+       <Main/>
+      </Route>
+      <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} isLoading={isLoading}/>
+      <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies} isLoading={isLoading}/>
+      <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} isLoading={isLoading}/>
 
       <Route path="/signin">
        <Login onLogin={handleLogin}/>

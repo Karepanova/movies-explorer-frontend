@@ -1,8 +1,12 @@
 import React from 'react';
 import './Profile.css';
 import {Link} from 'react-router-dom';
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
 
 const Profile = () => {
+
+  const currentUserContext = React.useContext(CurrentUserContext);
 
   return (
     <section className="profile">
