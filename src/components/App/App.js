@@ -28,25 +28,18 @@ function App() {
  const [currentUser, setCurrentUser] = useState({}); // данные о пользователе
  const [isLoading, setIsLoading] = useState(true); // ожидание результата проверки авторизации (авторизова или нет)
 
+
  const history = useHistory();
  const { pathname } = useLocation();
 
- /*useEffect(() => {
-  const token = Token.getToken();
-  if (token) {
-   MainApi.checkToken(token)
-    .then(() => {
-     setLoggedIn(true);
-     /!*history.push('/');*!/
-    })
-    .catch(() => {
-     setPopupText('Ошибка токена');
-     setIsOpenPopup(true);
-    });
-  }
- }, []);*/
 
  useEffect(() => {
+  getUserData();
+ }, []);
+
+
+
+ function getUserData () {
   MainApi.getUserData()
    .then((data) => {
     setCurrentUser(data);
@@ -58,7 +51,7 @@ function App() {
    .finally(() => {
     setIsLoading(false);
    });
- }, []);
+ }
 
  function handleRegister(formData) {
   MainApi.registration(formData)
@@ -66,7 +59,8 @@ function App() {
     if (res._id) {
      setPopupText('Спасибо, что зарегистрировались!');
      setIsOpenPopup(true);
-     history.push('/signin'); //переход по ссылке
+     handleLogin(formData);
+     // history.push('/signin'); //переход по ссылке
     }
    })
    .catch((err) => {
@@ -82,7 +76,10 @@ function App() {
      Token.saveToken(token);
      MainApi.updateToken();
      setLoggedIn(true);
-     history.push('/');
+
+     getUserData();
+
+     history.push('/movies');
     }
    })
    .catch((err) => {
@@ -91,9 +88,26 @@ function App() {
    });
  }
 
+ function openPopup(textError) {
+  setPopupText(textError);
+  setIsOpenPopup(true);
+ }
+
  function closePopup() {
   setIsOpenPopup(false);
   setPopupText('');
+ }
+
+ function logout() {
+  Token.removeToken();
+  setLoggedIn(false);
+  localStorage.removeItem('films');
+  localStorage.removeItem('filmsTumbler');
+  localStorage.removeItem('filmsInputSearch');
+
+  localStorage.removeItem('savedFilms');
+  localStorage.removeItem('savedFilmsTumbler');
+  localStorage.removeItem('savedFilmsInputSearch');
  }
 
  return (
@@ -109,9 +123,9 @@ function App() {
       <Route exact path="/">
        <Main/>
       </Route>
-      <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} isLoading={isLoading}/>
-      <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies} isLoading={isLoading}/>
-      <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} isLoading={isLoading}/>
+      <ProtectedRoute path="/movies" loggedIn={loggedIn} component={Movies} isLoading={isLoading} openPopup={openPopup}/>
+      <ProtectedRoute path="/saved-movies" loggedIn={loggedIn} component={SavedMovies} isLoading={isLoading} openPopup={openPopup}/>
+      <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} isLoading={isLoading} logout={logout} openPopup={openPopup}/>
 
       <Route path="/signin">
        <Login onLogin={handleLogin}/>

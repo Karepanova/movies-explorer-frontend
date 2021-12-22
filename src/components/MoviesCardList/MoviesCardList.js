@@ -1,10 +1,10 @@
 // управляет отрисовкой карточек
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
+import { useLocation } from "react-router-dom";
 
-const MoviesCardList = ({ films, savedMoviesToggle }) => {
-
-
+const MoviesCardList = ({ films, savedMoviesToggle, filmsSaved, filmsRemains, handleMore }) => {
+ const { pathname } = useLocation();
 
  return (
   <section className="moviesCardList__container">
@@ -12,14 +12,24 @@ const MoviesCardList = ({ films, savedMoviesToggle }) => {
    {films.length > 0 ?
     <div className="moviesCardList">
      {films.map((film) => (
-      <MoviesCard film={film} savedMoviesToggle={savedMoviesToggle}/>
+      <MoviesCard
+       key={film.id || film.movieId}
+       film={film}
+       savedMoviesToggle={savedMoviesToggle}
+       filmsSaved={filmsSaved}
+      />
      ))}
     </div> :
-     <div className="moviesCardList__text">Ничего не найдено</div>
+    pathname === '/saved-movies' ? '' :
+    <div className="moviesCardList__text">Ничего не найдено</div>
    }
-
-   <button className="moviesCardList__again" type="button">Ещё</button>
-
+   {filmsRemains.length > 0 && pathname !== '/saved-movies' &&
+   <button
+    className="moviesCardList__again"
+    type="button"
+    onClick={handleMore}
+   >Ещё</button>
+   }
   </section>
  );
 };

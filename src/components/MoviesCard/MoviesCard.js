@@ -1,25 +1,43 @@
-import React from 'react';
 import './MoviesCard.css';
-
+import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
-const MoviesCard = ({ film, savedMoviesToggle }) => {
- const [fav, setFav] = React.useState(false);
+const MoviesCard = ({ film, savedMoviesToggle, filmsSaved }) => {
+ const [fav, setFav] = useState(false);
+ const { pathname } = useLocation();
 
  function handleFavChange() {
   const newFav = !fav;
-  setFav(newFav);
-  savedMoviesToggle(film, newFav);
+  // setFav(newFav);
+  const savedFilm = filmsSaved.filter((obj) => {
+   return obj.movieId == film.id;
+  });
+  savedMoviesToggle({ ...film, _id: savedFilm.length > 0 ? savedFilm[0]._id : null }, newFav);
  }
 
- const { pathname } = useLocation();
+ function handleFavDelete() {
+  savedMoviesToggle(film, false)
+ }
 
  function getTime(mins) {
   let hours = Math.trunc(mins / 60);
   let minutes = mins % 60;
   return hours + 'ч' + minutes + 'м';
  }
- ;
+
+ useEffect(() => {
+  if (pathname !== '/saved-movies') {
+   const savedFilm = filmsSaved.filter((obj) => {
+    return obj.movieId == film.id;
+   });
+
+   if (savedFilm.length > 0) {
+    setFav(true);
+   } else {
+    setFav(false);
+   }
+  }
+ }, [filmsSaved]);
 
  return (
   <section className="movies-card">
@@ -38,7 +56,11 @@ const MoviesCard = ({ film, savedMoviesToggle }) => {
     </div>
     <div className="movies-card__buttons">
      {pathname === '/saved-movies' ?
-      <button type="button" className="movies-card__button movies-card__button_delete"/> :
+      <button
+       type="button"
+       className="movies-card__button movies-card__button_delete"
+       onClick={handleFavDelete}
+      /> :
       <button
        type="button"
        className={`movies-card__button movies-card__button${fav ? '_active' : '_inactive'}`}

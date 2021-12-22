@@ -4,30 +4,34 @@ import { useState } from 'react';
 import '../Form/Form.css';
 
 
-
-
-
 function Login({ onLogin }) {
   const [inputValues, setInputValues] = useState({});
+  const [errors, setErrors] = useState({});
+  const [isValid, setIsValid] = useState(false)
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setInputValues({
-      ...inputValues,
-      [name]: value,
-    });
+  const handleInputChange = (event) => {
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+    setInputValues({...inputValues, [name]: value });
+    setErrors({...errors, [name]: target.validationMessage });
+    setIsValid(target.closest("form").checkValidity());
   };
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(inputValues);
   };
 
+
   return (
 
    <section className="form">
      <div className="form__container">
-       <img src={logo} alt="Лого" className="form__logo"/>
+       <Link to="/">
+         <img src={logo} alt="Лого" className="form__logo"/>
+       </Link>
        <h2 className="form__header">Рады видеть!</h2>
        <form className="form__form" onSubmit={handleSubmit}>
          <div className="form__items">
@@ -36,21 +40,21 @@ function Login({ onLogin }) {
              <p className="form__module-text">E-mail</p>
              <input
               type="email"
-              className="form__field"
+              className={`form__field ${errors.email ? 'form__field_color-error' : ''}`}
               required
               onChange={handleInputChange}
               name="email"
               value={inputValues.email || ''}
               aria-label="Поле для ввода почты"
              />
-             <p className="form__error">Что-то пошло не так...</p>
+             <p className={`form__error ${errors.email ? 'form__error-display' : ''}`}>{errors.email}</p>
            </label>
 
            <label className="form__module">
              <p className="form__module-text">Пароль</p>
              <input
               type="password"
-              className="form__field form__field_color-error"
+              className={`form__field ${errors.password ? 'form__field_color-error' : ''}`}
               required
               onChange={handleInputChange}
               name="password"
@@ -58,12 +62,12 @@ function Login({ onLogin }) {
               minLength="5"
               aria-label="Поле для ввода пароля"
              />
-             <p className="form__error form__error-display">Что-то пошло не так...</p>
+             <p className={`form__error ${errors.password ? 'form__error-display' : ''}`}>{errors.password}</p>
            </label>
 
          </div>
 
-         <button type="submit" className="form__button">Войти</button>
+         <button type="submit" className="form__button" disabled={!isValid}>Войти</button>
        </form>
        <p className="form__text">
          Ещё не зарегистрированы?

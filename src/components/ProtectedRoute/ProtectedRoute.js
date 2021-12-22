@@ -11,7 +11,7 @@ const ProtectedRoute = ({ component: Component, ...props }) => {
   return (
    <Route>
      {() =>
-      props.isLoading ? <Preloader /> : props.loggedIn ? <Component {...props} /> : <Redirect to="/signin" />
+      props.isLoading ? <Preloader /> : props.loggedIn ? <Component {...props} /> : <Redirect to="/" />
      }
    </Route>
   );
