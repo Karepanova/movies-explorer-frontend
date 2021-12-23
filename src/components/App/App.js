@@ -17,9 +17,10 @@ import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'; // импорти
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import { Route, Switch, useLocation, useHistory, withRouter } from 'react-router-dom';
+import { Route, Switch, useLocation, useHistory, withRouter, Redirect } from 'react-router-dom';
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
  const [popupText, setPopupText] = useState('');
@@ -128,10 +129,15 @@ function App() {
       <ProtectedRoute path="/profile" loggedIn={loggedIn} component={Profile} isLoading={isLoading} logout={logout} openPopup={openPopup}/>
 
       <Route path="/signin">
-       <Login onLogin={handleLogin}/>
+       {() =>
+       isLoading ? <Preloader /> : !loggedIn ? <Login onLogin={handleLogin}/> : <Redirect to="/movies" />
+       }
       </Route>
+
       <Route path="/signup">
-       <Register onRegister={handleRegister}/>
+       {() =>
+        isLoading ? <Preloader /> : !loggedIn ? <Register onRegister={handleRegister} /> : <Redirect to="/movies" />
+       }
       </Route>
 
       <Route path="*">

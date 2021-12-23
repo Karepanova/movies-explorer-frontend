@@ -1,7 +1,9 @@
+import '../Form/Form.css';
 import logo from "../../images/logo.svg";
 import { Link } from "react-router-dom";
 import { useState } from 'react';
-import '../Form/Form.css';
+import isEmail from "validator/es/lib/isEmail";
+
 
 function Register({ onRegister }) {
  const [inputValues, setInputValues] = useState({});
@@ -12,6 +14,15 @@ function Register({ onRegister }) {
   const target = event.target;
   const name = target.name;
   const value = target.value;
+
+  if (name === "email") {
+   if (!isEmail(value)) {
+    target.setCustomValidity("Введите корректный e-mail");
+   } else {
+    target.setCustomValidity("");
+   }
+  }
+
   setInputValues({ ...inputValues, [name]: value });
   setErrors({ ...errors, [name]: target.validationMessage });
   setIsValid(target.closest("form").checkValidity());
@@ -78,7 +89,7 @@ function Register({ onRegister }) {
 
      </div>
 
-     <button type="submit" className="form__button">Зарегистрироваться</button>
+     <button type="submit" className="form__button" disabled={!isValid}>Зарегистрироваться</button>
     </form>
     <p className="form__text">
      Уже зарегистрированы?

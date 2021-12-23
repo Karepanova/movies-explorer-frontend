@@ -20,6 +20,9 @@ const Movies = ({ openPopup }) => {
  const [cardsInRow, setCardsInRow] = useState([]);
  const [filmsShowed, setFilmsShowed] = useState(null);
 
+ const [filmsWithTumbler, setFilmsWithTumbler] = useState([]);
+ const [filmsShowedWithTumbler, setFilmsShowedWithTumbler] = useState([]);
+
  useEffect(() => {
   setCardsInRow(calcCardsInRow());
   const handlerResize = () => setCardsInRow(calcCardsInRow());
@@ -58,7 +61,10 @@ const Movies = ({ openPopup }) => {
  }
 
  /*получение фильмов и запись их в сеттер + отображение Preloader при ожидании фильмов*/
- async function handleGetMovies(inputSearch, tumbler) {
+ async function handleGetMovies(inputSearch) {
+  setFilmsTumbler(false);
+  localStorage.setItem('filmsTumbler', false);
+
   if (!inputSearch) {
    setErrorText('Нужно ввести ключевое слово');
    return false;
@@ -68,14 +74,16 @@ const Movies = ({ openPopup }) => {
   try {
    const data = await moviesApi.getMovies();
    let filterData = data.filter(({ nameRU }) => nameRU.toLowerCase().includes(inputSearch.toLowerCase()));
-   if (tumbler) filterData = filterData.filter(({ duration }) => duration <= 40); // короткометражки
 
    localStorage.setItem('films', JSON.stringify(filterData)); // сохраняем в локалсторедж
-   localStorage.setItem('filmsTumbler', tumbler); // сохраняем в локалсторедж состояние тумблера
    localStorage.setItem('filmsInputSearch', inputSearch); // сохраняем в локалсторедж то что ввели в поиск
-
-   setFilmsShowed(filterData.splice(0, cardsInRow[0]));
+   const spliceData = filterData.splice(0, cardsInRow[0]);
+   setFilmsShowed(spliceData);
    setFilms(filterData);
+
+   setFilmsShowedWithTumbler(spliceData);
+   setFilmsWithTumbler(filterData);
+
   } catch (err) {
    setErrorText('Во время запроса произошла ошибка.\n' +
     'Возможно, проблема с соединением или сервер недоступен.\n' +
@@ -89,6 +97,29 @@ const Movies = ({ openPopup }) => {
   } finally {
    setPreloader(false);
   }
+ }
+
+ // получение короткометражек
+ async function handleGetMoviesTumbler(tumbler) {
+  let filterDataShowed = [];
+  let filterData = [];
+
+  if (tumbler) {
+   setFilmsShowedWithTumbler(filmsShowed);
+   setFilmsWithTumbler(films);
+
+   filterDataShowed = filmsShowed.filter(({ duration }) => duration <= 40);
+   filterData = films.filter(({ duration }) => duration <= 40);
+  } else {
+   filterDataShowed = filmsShowedWithTumbler;
+   filterData = filmsWithTumbler;
+  }
+
+  localStorage.setItem('films', JSON.stringify(filterDataShowed.concat(filterData))); // сохраняем в локалсторедж
+  localStorage.setItem('filmsTumbler', tumbler); // сохраняем в локалсторедж состояние тумблера
+
+  setFilmsShowed(filterDataShowed);
+  setFilms(filterData);
  }
 
  async function savedMoviesToggle(film, fav) {
@@ -165,6 +196,7 @@ const Movies = ({ openPopup }) => {
     handleGetMovies={handleGetMovies}
     filmsTumbler={filmsTumbler}
     filmsInputSearch={filmsInputSearch}
+    handleGetMoviesTumbler={handleGetMoviesTumbler}
    />
 
    {preloader && <Preloader/>}

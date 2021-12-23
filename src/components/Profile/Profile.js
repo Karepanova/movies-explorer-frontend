@@ -8,12 +8,16 @@ const Profile = ({ logout, openPopup }) => {
  const [name, setName] = useState(currentUser.name);
  const [email, setEmail] = useState(currentUser.email);
  const [activeButton, setActiveButton] = useState(false);
+ const [oldName, setOldName] = useState(currentUser.name);
+ const [oldEmail, setOldEmail] = useState(currentUser.email);
 
  const handleSubmit = (e) => {
   e.preventDefault();
   mainApi.updateUserData({ name, email })
    .then(() => {
      setActiveButton(false);
+     setOldName(name);
+     setOldEmail(email);
      openPopup('Данные изменены');
     },
    )
@@ -23,13 +27,23 @@ const Profile = ({ logout, openPopup }) => {
  };
 
  function handleNameChange(e) {
-  setName(e.target.value);
-  setActiveButton(true);
+  const value = e.target.value;
+  setName(value);
+  if (value !== oldName) {
+   setActiveButton(true);
+  } else {
+   setActiveButton(false);
+  }
  }
 
  function handleEmailChange(e) {
-  setEmail(e.target.value);
-  setActiveButton(true);
+  const value = e.target.value;
+  setEmail(value);
+  if (value !== oldEmail) {
+   setActiveButton(true);
+  } else {
+   setActiveButton(false);
+  }
  }
 
  return (

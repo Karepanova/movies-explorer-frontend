@@ -20,7 +20,6 @@ const MoviesCardList = ({ films, savedMoviesToggle, filmsSaved, filmsRemains, ha
       />
      ))}
     </div> :
-    pathname === '/saved-movies' ? '' :
     <div className="moviesCardList__text">Ничего не найдено</div>
    }
    {filmsRemains.length > 0 && pathname !== '/saved-movies' &&
