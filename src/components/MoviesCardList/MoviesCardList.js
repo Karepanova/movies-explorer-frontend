@@ -1,28 +1,36 @@
 // управляет отрисовкой карточек
 import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
-import Preloader from '../Preloader/Preloader';
+import { useLocation } from "react-router-dom";
 
-const MoviesCardList = () => {
+const MoviesCardList = ({ films, savedMoviesToggle, filmsSaved, filmsRemains, handleMore }) => {
+ const { pathname } = useLocation();
 
- return <div className="moviesCardList">
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  <MoviesCard/>
-  {/*<Preloader/>*/}
-  {/*<div>
-   фильмы не найдены
-  </div>*/}
- </div>;
+ return (
+  <section className="moviesCardList__container">
+   {/*если длина массива > 0, показываем фильмы, иначе "ничего не найдено"*/}
+   {films.length > 0 ?
+    <div className="moviesCardList">
+     {films.map((film) => (
+      <MoviesCard
+       key={film.id || film.movieId}
+       film={film}
+       savedMoviesToggle={savedMoviesToggle}
+       filmsSaved={filmsSaved}
+      />
+     ))}
+    </div> :
+    <div className="moviesCardList__text">Ничего не найдено</div>
+   }
+   {filmsRemains.length > 0 && pathname !== '/saved-movies' &&
+   <button
+    className="moviesCardList__again"
+    type="button"
+    onClick={handleMore}
+   >Ещё</button>
+   }
+  </section>
+ );
 };
 
 export default MoviesCardList;

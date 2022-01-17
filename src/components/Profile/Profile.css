@@ -89,6 +89,7 @@
     font-weight: normal;
     font-size: 11px;
     line-height: 13px;
+    outline: none;
 }
 
 .profile__button {
@@ -125,6 +126,9 @@
     font-size: 13px;
     line-height: 16px;
     transition: opacity 0.5s linear;
+    outline: none;
+    background-color: #202020;
+    border: none;
 }
 
 .profile__link:hover {

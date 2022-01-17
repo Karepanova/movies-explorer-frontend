@@ -14,7 +14,7 @@ const Navigation = () => {
      <section className={`navigation__menu-wrapper ${openMenu ? 'navigation__menu-wrapper_open' : ''}`}>
        <div className="navigation__container">
          <button className="navigation__close" onClick={handleToggleMenu} />
-         <navigation className="navigation">
+         <div className="navigation">
            <div className="navigation__position">
              <Link to="/" className="navigation__menu navigation__menu-right navigation__menu-right_show">
                Главная
@@ -34,7 +34,7 @@ const Navigation = () => {
                <div className="navigation__account-back" />
              </Link>
            </div>
-         </navigation>
+         </div>
        </div>
 
      </section>
