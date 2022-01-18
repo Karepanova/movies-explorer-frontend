@@ -8,7 +8,7 @@ const Footer = () => {
       <div className="footer__container">
         <p className="footer__text">Учебный проект Яндекс.Практикум х BeatFilm</p>
         <div className="footer__info">
-          <p className="footer__date">&copy; <span>2021</span></p>
+          <p className="footer__date">&copy; <span>2022</span></p>
           <ul className="footer__links">
             <li className="footer__item">
               <a className="footer__link" href="https://praktikum.yandex.ru" target="_blank">Яндекс.Практикум</a>

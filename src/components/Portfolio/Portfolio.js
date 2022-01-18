@@ -8,7 +8,7 @@ const Portfolio = () => {
         <h2 className="portfolio__header">Портфолио</h2>
         <ul className="portfolio__links">
           <li className="portfolio__item">
-            <a className="portfolio__link" href="https://how-to-learn.karepanova.ru/" target="_blank">
+            <a className="portfolio__link" href="https://www.facebook.com/profile.php?id=100064182712013" target="_blank">
               Статичный сайт</a>
           </li>
           <li className="portfolio__item">

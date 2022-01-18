@@ -1,6 +1,6 @@
 // компонент с информацией о студенте
 import './AboutMe.css';
-import photo from '../../images/photo8.jpg';
+import photo from '../../images/photo02.jpg';
 
 const AboutMe = () => {
 
@@ -18,7 +18,7 @@ const AboutMe = () => {
      выбранном направлении.</p>
     <ul className="about-me__links">
      <li>
-      <a className="about-me__link" href="https://www.facebook.com" target="_blank">Facebook</a>
+      <a className="about-me__link" href="https://www.facebook.com/profile.php?id=100064182712013" target="_blank">Facebook</a>
      </li>
      <li>
       <a className="about-me__link" href="https://github.com/Karepanova" target="_blank">Github</a>
