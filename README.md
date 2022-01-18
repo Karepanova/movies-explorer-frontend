@@ -1,12 +1,7 @@
 # movies-explorer-frontend
-<ul>
-<li>Frontend: <a href="https://movies-explorer.karepanova.ru/" target="_blank">https://movies-explorer.karepanova.ru/</a></li>  
-<li><a href="https://" target="_blank">Ссылка на макет в Figma</a></li>
-</ul>     
-
-
-
-IP: 45.86.183.246
+* Frontend: <a href="https://movies-explorer.karepanova.ru/" target="_blank">https://movies-explorer.karepanova.ru/</a></li>  
+* <a href="https://" target="_blank">Ссылка на макет в Figma</a></li>
+* IP: 45.86.183.246
 
 **Описание проекта**
 -
@@ -51,6 +46,3 @@ IP: 45.86.183.246
 * `npm i` - установка зависимостей
 * `npm run start` - запуск проекта
 * `npm run build` - запуск сборки проекта
-
-
-
