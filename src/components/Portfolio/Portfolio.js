@@ -8,11 +8,11 @@ const Portfolio = () => {
         <h2 className="portfolio__header">Портфолио</h2>
         <ul className="portfolio__links">
           <li className="portfolio__item">
-            <a className="portfolio__link" href="https://github.com/Karepanova/how-to-learn" target="_blank">
+            <a className="portfolio__link" href="https://how-to-learn.karepanova.ru/" target="_blank">
               Статичный сайт</a>
           </li>
           <li className="portfolio__item">
-            <a className="portfolio__link" href="https://github.com/Karepanova/russian-travel" target="_blank">
+            <a className="portfolio__link" href="https://russian-travel.karepanova.ru/" target="_blank">
               Адаптивный сайт</a>
           </li>
           <li className="portfolio__item">
