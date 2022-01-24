@@ -40,6 +40,6 @@
 * `npm run start` - запуск проекта
 * `npm run build` - запуск сборки проекта
 
-* Frontend: <a href="https://movies-explorer.karepanova.ru/" target="_blank">https://movies-explorer.karepanova.ru/</a>
+* Frontend: https://movies-explorer.karepanova.ru/
 * <a href="https://" target="_blank">Ссылка на макет в Figma</a>
 * IP: 45.86.183.246
